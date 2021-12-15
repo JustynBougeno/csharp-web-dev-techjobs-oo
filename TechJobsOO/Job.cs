@@ -40,8 +40,26 @@ namespace TechJobsOO
         {
             return HashCode.Combine(Id);
         }
+        // Returns job info itno a formatted string.
+       
+       
+        public override string ToString()
+        {
+            string noData = "Data not available";
+            string nullProofName = Name.Length > 0 ? Name : noData;
+            string nullProofEmployer = EmployerName.Value.Length > 0 ? EmployerName.Value : noData;
+            string nullProofEmployerLocation = EmployerLocation.Value.Length > 0 ? EmployerLocation.Value : noData;
+            string nullProofJobType = JobType.Value.Length > 0 ? JobType.Value : noData;
+            string nullProofJobCoreCompetency = JobCoreCompetency.ToString().Length > 0 ? JobCoreCompetency.ToString() : noData;
 
+            // Setup conditional for ToString for empty values. On this line to say data no avaliabe for empty fields.
+            string jobInfo =  $"\r\nID: {Id}\r\nName: {nullProofName}\r\nEmployer: {nullProofEmployer}\r\nLocation: {nullProofEmployerLocation}\r\n" +
+                $"Position: {nullProofJobType}\r\nCompetency: {nullProofJobCoreCompetency}\r\n";
 
+            return jobInfo;
+        }
+        // This below will go inside the ToString method.
         // TODO: Generate Equals() and GetHashCode() methods.
+        
     }
 }
